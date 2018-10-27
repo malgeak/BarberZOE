@@ -17,8 +17,8 @@
 		<!-- RECURSOS -->
 		<link rel="stylesheet" href="recursos/css/w3.css"> <!-- FRAMEWORK (VISUAL) CSS -->
 
-		<!-- Fuentes (De ser posible) e iconos
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">-->
+		<!-- Fuentes (De ser posible) e iconos -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!-- Esta pagina -->		
@@ -45,8 +45,8 @@
 						}
 						
 						$query = "SELECT * FROM $movimiento ORDER BY $id ASC";
-						$resultado = pg_query($conexion, $query) or die("Error al obtener datos de $movimiento");
-						$numMovs = pg_num_rows($resultado);
+						$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos de $movimiento");
+						$numMovs = mysqli_num_rows($resultado);
 
 						echo "<h3>Todos los registros de " . $movimiento . "</h3>";
 						echo '<table class="w3-table-all w3-centered" id="'.$movimiento.'">';
@@ -71,7 +71,7 @@
 						echo "</tr>";
 
 						if($numMovs>0){ //Filas
-							while ($fila=pg_fetch_array($resultado)) {
+							while ($fila=mysqli_fetch_array($resultado)) {
 								echo "<tr class='w3-animate-opacity'>";
 								if($movimiento=="ventas"){ //Filas
 									echo "<td>" . $fila['pkventa'] . "</td>";
@@ -117,5 +117,5 @@
 </html>
 
 <?php
-	pg_close($conexion);
+	mysqli_close($conexion);
 ?>

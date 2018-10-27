@@ -43,11 +43,11 @@
 
 						<?php
 							$query = "SELECT * FROM ventas ORDER BY pkventa ASC";
-							$resultado = pg_query($conexion, $query) or die("Error al obtener datos de ventas");
-							$numProds = pg_num_rows($resultado);
+							$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos de ventas");
+							$numProds = mysqli_num_rows($resultado);
 
 							if($numProds>0){
-								while ($fila=pg_fetch_array($resultado)) {
+								while ($fila=mysqli_fetch_array($resultado)) {
 									echo "<tr class='w3-animate-opacity'>";
 										echo "<td>" . $fila['pkventa'] . "</td>";
 										echo "<td>" . $fila['fkfecha'] . "</td>";	
@@ -101,11 +101,11 @@
 
 						<?php
 							$query = "SELECT * FROM gastos ORDER BY pkgasto ASC";
-							$resultado = pg_query($conexion, $query) or die("Error al obtener datos en gastos");
-							$numMats = pg_num_rows($resultado);
+							$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en gastos");
+							$numMats = mysqli_num_rows($resultado);
 
 							if($numMats>0){
-								while ($fila=pg_fetch_array($resultado)) {
+								while ($fila=mysqli_fetch_array($resultado)) {
 									echo "<tr class='w3-animate-opacity'>";
 										echo "<td>" . $fila['pkgasto'] . "</td>";
 										echo "<td>" . $fila['fkfecha'] . "</td>";

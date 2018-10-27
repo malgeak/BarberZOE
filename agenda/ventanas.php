@@ -2,10 +2,10 @@
 <div id="agregarEvento" class="w3-modal">
 	<?php 
 		$query = "SELECT * FROM eventos ORDER BY eventos ASC";
-		$resultado = pg_query($conexion, $query) or die("Error al obtener datos en eventos");
-		$numRows = pg_num_rows($resultado);
+		$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en eventos");
+		$numRows = mysqli_num_rows($resultado);
 		if($numRows>0){
-			while ($fila=pg_fetch_array($resultado)) {
+			while ($fila=mysqli_fetch_array($resultado)) {
 				$lastId = $fila['pkevento'];
 			}
 		}else{
@@ -100,11 +100,11 @@
 
 								<?php
 									$query = "SELECT * FROM eventos ORDER BY pkevento ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en eventos");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en eventos");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td><input class='w3-check' type='checkbox' name='selected[]' value='" . $fila['pkevento'] . "'></td>";
 												echo "<td>" . $fila['nombre'] . "</td>";
@@ -154,11 +154,11 @@
 
 							<?php
 								$query = "SELECT * FROM eventos ORDER BY pkevento ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en eventos");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en eventos");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td>" . $fila['pkevento'] . "</td>";
 												echo "<td>" . $fila['nombre'] . "</td>";

@@ -1,5 +1,5 @@
 <!--
-	LU: 09/07/18
+	LU: 27/10/18
 
 	Total lenguajes y framework utilizados:
 	PHP, JAVASCRIPT, CSS3, HTML5, POSTGRESQL, W3.CSS.
@@ -127,5 +127,5 @@
 </html>
 
 <?php
-	pg_close($conexion);
+	mysqli_close($conexion);
 ?>

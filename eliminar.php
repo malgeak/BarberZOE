@@ -19,7 +19,7 @@
 		$counts = count($elegidos); //Cuenta los seleccionados
 		for($i=0; $i < $counts; $i++){ //El $elegidos[$i] seleccionado es el serial
 			$query = "DELETE FROM $tabla WHERE $id=$elegidos[$i]";
-			$resultado = pg_query($conexion, $query) or die("Error al eliminar registros");
+			$resultado = mysqli_query($conexion, $query) or die("Error al eliminar registros");
 			echo "Se eliminó de la tabla ".$tabla.", el elemento con el ID ".$elegidos[$i]. ".<br>";
 		}
 
@@ -32,5 +32,5 @@
 		}
 	}
 
-	pg_close($conexion);	
+	mysqli_close($conexion);	
 ?>

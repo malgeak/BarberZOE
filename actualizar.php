@@ -14,8 +14,8 @@
 	*/
 
 	$query = "SELECT * FROM $tabla ORDER BY pkserial ASC";
-	$resultado = pg_query($conexion, $query) or die ("Error al obtener datos en productos");
-	$totalRegs = pg_num_rows($resultado); //Total registros leidos de la BD
+	$resultado = mysqli_query($conexion, $query) or die ("Error al obtener datos en productos");
+	$totalRegs = mysqli_num_rows($resultado); //Total registros leidos de la BD
 
 	if(empty($_POST['precio']) || empty($_POST['stock'])){ //En caso de no tener registros
 		echo "¡No se ha actualizado nada!";
@@ -23,11 +23,11 @@
 		echo "Toda la tabla se ha actualizado.<br>";
 		for($i=0; $i < $totalRegs; $i++){ //El id seleccionado es el actualizado
 			$query = "UPDATE $tabla SET precio=$precios[$i] WHERE pkserial=$place[$i]"; //El mismo id del post			
-			$resultado = pg_query($conexion, $query) or die ("Error al actualizar precios");
+			$resultado = mysqli_query($conexion, $query) or die ("Error al actualizar precios");
 			echo "De la tabla ".$tabla.", el elemento con el ID ".$place[$i].", el precio ahora es:".$precios[$i].".<br>";
 
 			$query = "UPDATE $tabla SET stock=$stocks[$i] WHERE pkserial=$place[$i]"; //El mismo id del post
-			$resultado = pg_query($conexion, $query) or die("Error al actualizar stock");
+			$resultado = mysqli_query($conexion, $query) or die("Error al actualizar stock");
 			echo "De la tabla ".$tabla.", el elemento con el ID ".$place[$i].", el stock ahora es:".$stocks[$i].".<br>";
 		}
 	}

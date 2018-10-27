@@ -2,10 +2,10 @@
 <div id="agregarBar" class="w3-modal">
 	<?php 
 		$query = "SELECT * FROM productos ORDER BY pkserial ASC";
-		$resultado = pg_query($conexion, $query) or die("Error al obtener datos en productos");
-		$numRows = pg_num_rows($resultado);
+		$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en productos");
+		$numRows = mysqli_num_rows($resultado);
 		if($numRows>0){
-			while ($fila=pg_fetch_array($resultado)) {
+			while ($fila=mysqli_fetch_array($resultado)) {
 				$lastId = $fila['pkserial'];
 			}
 		}else{
@@ -89,11 +89,11 @@
 
 								<?php
 									$query = "SELECT * FROM productos ORDER BY pkserial ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en productos");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en productos");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td><input class='w3-check' type='checkbox' name='selected[]' value='" . $fila['pkserial'] . "'></td>";
 												echo "<td>" . $fila['pkserial'] . "</td>";
@@ -148,11 +148,11 @@
 
 								<?php
 									$query = "SELECT * FROM productos ORDER BY pkserial ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en productos");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en productos");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td>" . $fila['pkserial'] . "</td>";
 												echo "<input value='" . $fila['pkserial'] . "' type='text' name='id[]' style='display: none;'>";
@@ -184,10 +184,10 @@
 <div id="agregarPel" class="w3-modal">
 	<?php 
 		$query = "SELECT * FROM materiales ORDER BY pkserial ASC";
-		$resultado = pg_query($conexion, $query) or die("Error al obtener datos en materiales");
-		$numRows = pg_num_rows($resultado);
+		$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en materiales");
+		$numRows = mysqli_num_rows($resultado);
 		if($numRows>0){
-			while ($fila=pg_fetch_array($resultado)) {
+			while ($fila=mysqli_fetch_array($resultado)) {
 				$lastId = $fila['pkserial'];
 			}
 		}else{
@@ -272,11 +272,11 @@
 
 								<?php
 									$query = "SELECT * FROM materiales ORDER BY pkserial ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en materiales");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en materiales");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td><input class='w3-check' type='checkbox' name='selected[]' value='" . $fila['pkserial'] . "'></td>";
 												echo "<td>" . $fila['pkserial'] . "</td>";
@@ -331,11 +331,11 @@
 
 								<?php
 									$query = "SELECT * FROM materiales ORDER BY pkserial ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en materiales");
-									$numProds = pg_num_rows($resultado);
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en materiales");
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												echo "<td>" . $fila['pkserial'] . "</td>";
 												echo "<input value='" . $fila['pkserial'] . "' type='text' name='id[]' style='display: none;'>";

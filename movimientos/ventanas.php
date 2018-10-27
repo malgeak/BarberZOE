@@ -2,10 +2,10 @@
 <div id="agregarVenta" class="w3-modal">
 	<?php
 		$query = "SELECT * FROM ventas ORDER BY pkventa ASC";
-		$resultado = pg_query($conexion, $query) or die("Error al obtener datos en ventas");
-		$numRows = pg_num_rows($resultado);
+		$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en ventas");
+		$numRows = mysqli_num_rows($resultado);
 		if($numRows>0){
-			while ($fila=pg_fetch_array($resultado)) {
+			while ($fila=mysqli_fetch_array($resultado)) {
 				$lastId = $fila['pkventa']; //Obtener el ultimo id de ventas
 			}
 		}else{
@@ -50,12 +50,12 @@
 
 								<?php
 									$query = "SELECT * FROM productos ORDER BY pkserial ASC";
-									$resultado = pg_query($conexion, $query) or die("Error al obtener datos en productos");
+									$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en productos");
 
-									$numProds = pg_num_rows($resultado);
+									$numProds = mysqli_num_rows($resultado);
 
 									if($numProds>0){
-										while ($fila=pg_fetch_array($resultado)) {
+										while ($fila=mysqli_fetch_array($resultado)) {
 											echo "<tr class='w3-animate-opacity'>";
 												if($fila['stock']>0){
 													echo "<td>" . $fila['pkserial'] . "</td>";
@@ -97,10 +97,10 @@
 <div id="agregarGasto" class="w3-modal">
 	<?php
 		$query = "SELECT * FROM gastos ORDER BY pkgasto ASC";
-		$resultado = pg_query($conexion, $query) or die("Error al obtener datos en gastos");
-		$numRows = pg_num_rows($resultado);
+		$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en gastos");
+		$numRows = mysqli_num_rows($resultado);
 		if($numRows>0){
-			while ($fila=pg_fetch_array($resultado)) {
+			while ($fila=mysqli_fetch_array($resultado)) {
 				$lastId = $fila['pkgasto']; //Obtener el ultimo id de gastos
 			}
 		}else{

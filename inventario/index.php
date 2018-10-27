@@ -41,11 +41,11 @@
 
 						<?php
 							$query = "SELECT * FROM productos ORDER BY pkserial ASC";
-							$resultado = pg_query($conexion, $query) or die("Error al obtener datos de productos");
-							$numProds = pg_num_rows($resultado);
+							$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos de productos");
+							$numProds = mysqli_num_rows($resultado);
 
 							if($numProds>0){
-								while ($fila=pg_fetch_array($resultado)) {
+								while ($fila=mysqli_fetch_array($resultado)) {
 									echo "<tr class='w3-animate-opacity'>";
 										echo "<td>" . $fila['pkserial'] . "</td>";
 										echo "<td>" . $fila['nombre'] . "</td>";
@@ -99,11 +99,11 @@
 
 						<?php
 							$query = "SELECT * FROM materiales ORDER BY pkserial ASC";
-							$resultado = pg_query($conexion, $query) or die("Error al obtener datos en materiales");
-							$numMats = pg_num_rows($resultado);
+							$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en materiales");
+							$numMats = mysqli_num_rows($resultado);
 
 							if($numMats>0){
-								while ($fila=pg_fetch_array($resultado)) {
+								while ($fila=mysqli_fetch_array($resultado)) {
 									echo "<tr class='w3-animate-opacity'>";
 										echo "<td>" . $fila['pkserial'] . "</td>";
 										echo "<td>" . $fila['nombre'] . "</td>";

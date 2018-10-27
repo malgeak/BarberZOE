@@ -1,7 +1,7 @@
 <?php
 	#Cambia por equipo
-	$user = "postgres";
-	$pass = "tescha";
+	$user = "root";
+	$pass = "";
 	$dbname = "barberzoe"; //CREAR MANUALMENTE(?)
 	$port = "5433";
 	$host = "localhost";
@@ -15,8 +15,8 @@
 	#Tiempo de redireccion
 	$tiempoRedir = 0; //Segundos en redireccionar
 
-	$conn = "host=$host port=$port dbname=$dbname user=$user password=$pass"; //Prepara conexión
-	$conexion = pg_connect($conn) or die("Error al conectar BD"); //Realiza conexión
+	$conexion = mysqli_connect($host, $user, $pass) or die ("Error al conectar con el servidor de la base de datos");
+    $db = mysqli_select_db ($conexion, $dbname)or die ("Error alconectarse con la base de datos");
 
 	require "database.php"; //Crea las tablas de la BD (Si no existen o faltan llaves primarias)
 
@@ -59,28 +59,28 @@
 
 	#Obtener nombre del negocio
 	$query = "SELECT * FROM negocio";
-	$resultado = pg_query($conexion, $query) or die("Error al obtener datos en negocio");
-	while ($fila=pg_fetch_array($resultado)) {					
+	$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos en negocio");
+	while ($fila=mysqli_fetch_array($resultado)) {					
 		$negocio = $fila['pknombre'];
 	}	
 
 	#Cada día valida que esté disponible para realizar registros en eventos, ventas y gastos
 	$hoy = date("Y-m-d"); //AAAA-MM-DD
 	$query = "SELECT * FROM agenda";
-	$resultado = pg_query($conexion, $query) or die("Error al obtener datos de agenda");
-	$days = pg_num_rows($resultado);
+	$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos de agenda");
+	$days = mysqli_num_rows($resultado);
 	if($days>0){ //Si hay algun registro
-		while ($fila=pg_fetch_array($resultado)) {
+		while ($fila=mysqli_fetch_array($resultado)) {
 			$lastDay = $fila['pkfecha']; //Busca la ultima fecha insertada
 		}
 
 		if ($lastDay!=$hoy) { //Si el ultimo día insertado es diferente al de hoy
 			$query = "INSERT INTO agenda VALUES ('$negocio', '$hoy')"; //Inserta datos hoy
-			$resultado = pg_query($conexion, $query) or die("<script>alert('Error al insertar fecha');</script>");
+			$resultado = mysqli_query($conexion, $query) or die("<script>alert('Error al insertar fecha');</script>");
 		}
 	}else{
 		$query = "INSERT INTO agenda VALUES ('$negocio', '$hoy')"; //Si no hay registros
-		$resultado = pg_query($conexion, $query) or die("<script>alert('Error al insertar fecha');</script>");
+		$resultado = mysqli_query($conexion, $query) or die("<script>alert('Error al insertar fecha');</script>");
 	}
 
 	##### POST/GET ######
