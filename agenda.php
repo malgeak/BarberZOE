@@ -1,5 +1,6 @@
 <!-- AGENDA -->
-<div id="Agenda" style="height: 100%;" class="hidden w3-animate-opacity w3-content w3-padding-large w3-margin-top">			
+<div id="agenda" class="hidden w3-animate-opacity w3-content w3-padding-large w3-margin-top hide">	
+
 	<div class="w3-white w3-card-4 w3-margin-bottom">
 		<div class="w3-row">
 			<div class="w3-padding">
@@ -38,17 +39,5 @@
 
 			<?php include "calendario.php";?>
 		</div>
-
-		<div class="w3-row w3-margin-top">
-			<div class="w3-center w3-padding w3-block w3-margin-top">
-				<button onclick="openEl('agregarEvento'); SetDate(); alerta('Llene todos los campos')" class="w3-border w3-white w3-hover-blue w3-button w3-round-medium w3-ripple w3-margin-bottom">Agregar</button>
-				<button onclick="openEl('eliminarEvento'); alerta('Seleccione los eventos a eliminar')" class="w3-border w3-white w3-hover-red w3-button w3-round-medium w3-ripple w3-margin-bottom">Eliminar</button>
-				<button onclick="openEl('revisarEventos'); alerta('Son todos los eventos registrados')" class="w3-border w3-white w3-hover-blue w3-button w3-round-medium w3-ripple w3-margin-bottom">Revisar</button>
-			</div>
-		</div>
 	</div>
 </div>
-
-<?php
-	include "ventanas.php";
-?>

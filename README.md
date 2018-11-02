@@ -31,15 +31,12 @@ El archivo “config.php” es el único que requiere modificaciones, a continua
 requeridas.
 
 Cambia por equipo en el que se instala:
-	$user = "postgres"; //Usuario de Shell SQL
-	$pass = "tescha"; //Contraseña de Shell SQL
-	$dbname = "barberzoe"; //CREAR MANUALMENTE EN PostgreSQL-
+	$user = "postgres"; //Usuario de MySQL
+	$pass = "tescha"; //Contraseña de MySQL
+	$dbname = "barberzoe"; //CREAR MANUALMENTE
 	$port = "5433"; //Cambiar si es necesario
 	$host = "localhost";
 	$negocio = "Barber Shop ZOE"; //Nombre del negocio
-
--Es el mismo nombre que utilizamos para crear la base de datos manualmente desde la consola de
-comandos.
 
 Carpeta en la que se encuentra el proyecto--
 $raiz = "/";
