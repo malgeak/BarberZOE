@@ -1,121 +1,53 @@
 <?php
-	include "config.php"; //Configuraciones
-	include "recursos/php/functions.php"; //Funciones visuales
+	include "config.php"; //Configuraciones y recursos
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo $negocio;?></title> <!-- Titulo en pestaña navegador -->
-		<meta charset="UTF-8">
-		<link rel="shortcut icon" type="image/x-icon" href="recursos/imagenes/favicon.ico">
-
-		<!-- JQUERY Y HTML5 -->
-		<script src="recursos/js/html5shiv.js"></script> <!-- HTML5 -->
-		<meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Visual en moviles -->
-
-		<!-- RECURSOS -->
-		<link rel="stylesheet" href="recursos/css/w3.css"> <!-- FRAMEWORK (VISUAL) CSS -->
-
-		<!-- Fuentes (De ser posible) e iconos -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-		<!-- Esta pagina -->		
-		<link rel="stylesheet" href="recursos/css/barberia.css"> <!-- Estilos componentes -->
+		<title>IMPRIMIR - <?php echo $negocio;?></title>
 	</head>
-	<body style="background: #cfcfcf; width: 100%; height: 100%;">
+	<body>
+		<div class="ribbon w3-red w3-card-4" style="position: fixed; padding: 20px 0; right: -200px; top: 55px; width: 550px; left: unset;">EN DESARROLLO</div>
+
 		<div style="width: 595px !important; height: 842px !important; overflow: hidden; display: block; margin: auto; background: white;">
 			<div class="w3-row w3-center">
 				<?php
-					$movimiento=null;
-					$total=$sumatoria=0; //Sumatorias
-					#$fecha=null; ->Por implementar		
-					$id=null;
-					if(empty($_GET["movimientos"])){
-						echo "Error!";
-						$movimiento="Error!";
-					}else{
-						$movimiento=$_GET['movimientos'];
-						
-						if($movimiento=="ventas"){ //Cabeceras
-							$id="pkventa";
-						}else if($movimiento=="gastos"){
-							$id="pkgasto";
-						}
-						
-						$query = "SELECT * FROM $movimiento ORDER BY $id ASC";
-						$resultado = mysqli_query($conexion, $query) or die("Error al obtener datos de $movimiento");
-						$numMovs = mysqli_num_rows($resultado);
+					if ($_SERVER["REQUEST_METHOD"] == "GET") {
+						//Obtener todas las variables y tabla
 
-						echo "<h3>Todos los registros de " . $movimiento . "</h3>";
-						echo '<table class="w3-table-all w3-centered" id="'.$movimiento.'">';
-						echo '<tr class="w3-light-grey">';
-						if($movimiento=="ventas"){ //Cabeceras
-							echo "
-								<th>ID</th>
-								<th>Fecha</th>
-								<th>Hora</th>
-								<th>Descuento</th>
-								<th>Total</th>
-								<th>Descripción</th>
-							";
-						}else if($movimiento=="gastos"){
-							echo "
-								<th>ID</th>
-								<th>Fecha</th>
-								<th>Total</th>
-								<th>Descripción</th>
-							";
-						}
-						echo "</tr>";
-
-						if($numMovs>0){ //Filas
-							while ($fila=mysqli_fetch_array($resultado)) {
-								echo "<tr class='w3-animate-opacity'>";
-								if($movimiento=="ventas"){ //Filas
-									echo "<td>" . $fila['pkventa'] . "</td>";
-									echo "<td>" . $fila['fkfecha'] . "</td>";	
-									echo "<td>" . substr_replace($fila['hora'],"",5) . "</td>";
-									if($fila['descuento']>0){
-										echo "<td>" . $fila['descuento'] . "%</td>";
-									}else{
-										echo "<td>-----</td>";
-									}														
-									echo "<td>$" . $fila['costototal'] . "</td>";
-									echo "<td><div class='w3-small'>".$fila['descripcion']."</div></td>";
-								}else if($movimiento=="gastos"){
-									echo "<td>" . $fila['pkgasto'] . "</td>";
-									echo "<td>" . $fila['fkfecha'] . "</td>";	
-									echo "<td>$" . $fila['costototal'] . "</td>";
-									echo "<td><div class='w3-small'>".$fila['descripcion']."</div></td>";
-								}
-									
-								echo "</tr>";
-
-								$total++; //Total de registros
-								$sumatoria+=$fila['costototal']; //Total de $
-							}
-
-							echo "<tr class='w3-animate-opacity'>";
-								echo "<td colspan='6'>Total ".$movimiento.": ".$total."<br>Total: $".$sumatoria."</td>";
+						//Imprimir encabezado con nombre de tabla
+						echo "<h3>Registro # de tabla X</h3>";
+						//Imprimir tabla con registro(s)
+						echo "<table class='w3-table-all w3-centered'>";
+							echo "<tr class='w3-light-grey'>";
+								echo "<th>COLUMNAS</th>";
+								echo "<th>COLUMNAS</th>";
+								echo "<th>COLUMNAS</th>";
+								echo "<th>COLUMNAS</th>";
 							echo "</tr>";
-						}else{
-							if($movimiento=="ventas"){ //Cabeceras
-								echo "<tr><td colspan='6'>No hay registros</td><tr>";
-							}else if($movimiento=="gastos"){
-								echo "<tr><td colspan='4'>No hay registros</td><tr>";
+
+							for($i=0; $i<10; $i++){
+								echo "<tr>";
+									echo "<td>REGISTROS</td>";
+									echo "<td>REGISTROS</td>";
+									echo "<td>REGISTROS</td>";
+									echo "<td>REGISTROS</td>";
+								echo "</tr>";								
 							}
-							
-						}
+							echo "<tr>";
+								echo "<td colspan='2'></td>";
+								echo "<td class='w3-right-align'>TOTAL:</td>";
+								echo "<td class='w3-left-align'>NNN</td>";
+							echo "</tr>";								
 						echo "</table>";
+
+						//Agregar boton especial para imprimir (navegador)
+					}else{
+						redireccionar("");
 					}
 				?>
 			</div>
 		</div>
 	</body>
 </html>
-
-<?php
-	mysqli_close($conexion);
-?>
