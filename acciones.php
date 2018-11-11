@@ -2,7 +2,7 @@
 	try { //Implementación con PDO
 	    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass); //Conexión
 	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Tipo de conexión -> PDO
-	    #echo "Se conectó correctamente con la BD. <br>";
+	    #echo "Se conectó correctamente con la BD. <br>"; 
 
 	    if (isset($_POST['agregar'])) { //Al hacer clic en algun boton para agregar
 	    	#Limpia todos los elementos posibles -> Obtiene de $_POST['elemento']

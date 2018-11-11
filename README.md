@@ -14,14 +14,16 @@ Este proyecto comenzó buscando algún cliente que necesitará de algún sistema
 Lenguajes:
 PHP 7.x
 MYSQL (Anteriormente PostgreSQL)
-Javascript (Framework W3.JS)
-CSS3 (Framework W3.CSS)
 
 Visual:
 HTML5
 
-MONTADO:
-Servidor barberzoe.omcodem.com (INACTIVO 24/10/18 HASTA 4/11/18)
+Framewoks:
+Javascript (Framework W3.JS)
+CSS3 (Framework W3.CSS)
+
+Web:
+Servidor www.barberzoe.omcodem.com (Sin probar del todo)
 
 GUÍA DE "INSTALACIÓN"
 EL proyecto se puede descomprimir en cualquier carpeta que permita el sistema de archivos de php, es necesario recordar la RUTA ABSOLUTA de donde se descomprime, se utilizará en las
