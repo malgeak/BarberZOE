@@ -13,7 +13,7 @@ Este proyecto comenzó buscando algún cliente que necesitará de algún sistema
 
 Lenguajes:
 PHP 7.x
-MYSQL (Anteriormente PostgreSQL)
+postgresql
 
 Visual:
 HTML5
@@ -22,12 +22,8 @@ Framewoks:
 Javascript (Framework W3.JS)
 CSS3 (Framework W3.CSS)
 
-Web:
-Servidor www.barberzoe.omcodem.com (Sin probar del todo)
-
 GUÍA DE "INSTALACIÓN"
-EL proyecto se puede descomprimir en cualquier carpeta que permita el sistema de archivos de php, es necesario recordar la RUTA ABSOLUTA de donde se descomprime, se utilizará en las
-configuraciones.
+EL proyecto se puede descomprimir en cualquier carpeta que permita el sistema de archivos de php, es necesario recordar la RUTA ABSOLUTA de donde se descomprime, se utilizará en las configuraciones.
 Para configurar la conexión con postgresql es necesario crear manualmente la base de datos, el nombre con el que se crea la base de datos se guardará en el archivo “config.php” que se encuentra en la carpeta raíz del archivo a descomprimir.
 El archivo “config.php” es el único que requiere modificaciones, a continuación se muestran las
 requeridas.
